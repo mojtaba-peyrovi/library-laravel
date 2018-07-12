@@ -30,7 +30,11 @@
 
         <div class="row">
         @foreach ($authors as $author)
+
+
+
         <div class="col-md-2 mt-4">
+
             <div class="mb-3">
 
                     <div class="view overlay">
@@ -41,7 +45,14 @@
                         </div>
                         </a>
                     </div>
-
+                    <div class="float-right">
+                        <a href="#">
+                            <span class="badge badge-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                        </a>
+                        <a href="#">
+                            <span class="badge badge-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                        </a>
+                    </div>
                 <strong>
                     <a href="/authors/{{ $author->id }}">
                         {{ $author->name }} {{ $author->last_name }}

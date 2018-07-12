@@ -22,4 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/authors', 'AuthorsController@index')->name('authors-index');
 Route::get('/authors/{author}', 'AuthorsController@show')->name('authors-show');
+Route::get('/author/create', 'AuthorsController@create')->name('authors-create');
+Route::post('/authors', 'AuthorsController@store');
+
+Route::get('/types', 'TypeController@index');
+Route::get('/type/create', 'TypeController@create');
+Route::post('/types', 'TypeController@store');
 Auth::routes();

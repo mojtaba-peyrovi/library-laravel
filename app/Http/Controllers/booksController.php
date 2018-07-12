@@ -44,10 +44,16 @@ class booksController extends Controller
     public function store(Request $request)
     {
         //validation
+        // $type = $request->input('type');
+        // dd($type);
+        // dd($request->input('type'));
 
         $book = Book::create([
             'title' => request('title'),
-            'author_id' => request('author'),
+            'author_id' => $request->input('author'),
+            'type_id' => $request->input('type'),
+            'publisher_id' => 1,
+            'publish_year' => request('publish_year'),
             'photo' => request('photo'),
             'desc' => request('desc')
         ]);

@@ -24,30 +24,36 @@
                   <label for="title">Title: </label>
                   <input type="text" class="form-control" name="title">
                 </div>
-
-                <div class="form-group">
-                  <label for="author">Type: </label>
-                  <select class="custom-select">
-                      <option selected>types</option>
-                        @foreach ($types as $type)
-                            <option value="{{ $type->id }}" name="author">{{ $type->title }}</option>
-                        @endforeach
-                  </select>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="author">Type: </label>
+                      <select class="custom-select" name="type">
+                          <option selected>types</option>
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}">{{ $type->title }}</option>
+                            @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="publish_year">Publish Year: </label>
+                      <input type="text" class="form-control" name="publish_year">
+                    </div>
                 </div>
-                
+
+
                 <a href="#" class="btn btn-outline-warning">New Type</a>
 
                     <div class="form-group">
                       <label for="author">Author: </label>
-                      <select class="custom-select">
+                      <select class="custom-select" name="author">
                           <option selected>Pick an author</option>
                             @foreach ($authors as $author)
-                                <option value="{{ $author->id }}" name="author">{{ $author->fullName() }}</option>
+                                <option value="{{ $author->id }}">{{ $author->fullName() }}</option>
                             @endforeach
                       </select>
                     </div>
 
-                        <a href="#" class="btn btn-outline-warning">New Author</a>
+                        <a href="/author/create" class="btn btn-outline-warning">New Author</a>
 
 
                 <div class="form-group">

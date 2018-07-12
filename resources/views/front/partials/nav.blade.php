@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark primary-color">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/books">
         <img src="{{ asset('img/logo.png') }}" alt="">
     </a>
 
@@ -29,10 +29,24 @@
                     <a class="dropdown-item" href="/book/create">Add a Book</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/authors">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-pencil"></i>
                     Authors</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/authors">All Authors</a>
+                    <a class="dropdown-item" href="/author/create">Add an Author</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bookmark"></i>
+                    Types(Genres)</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/types">All Types</a>
+                    <a class="dropdown-item" href="/type/create">Add a Type</a>
+                </div>
             </li>
 
         </ul>

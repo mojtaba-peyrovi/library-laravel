@@ -35,6 +35,15 @@
 
                     <div class="col-md-2 mt-4">
                         <span class="badge {{ $book->type->color }}">{{ $book->type->title }}</span>
+                        <div class="float-right">
+                            <a href="#">
+                                <span class="badge badge-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                            </a>
+                            <a href="#">
+                                <span class="badge badge-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                            </a>
+                        </div>
+
                         <div class="mb-3">
                             <div class="view overlay">
                                 <img class="z-depth-1-half" src="{{ $book->photo }}" alt="">
@@ -49,6 +58,7 @@
                             {{ $book->title }}
                             ({{ $book->publish_year }})
                         </a>
+
 
                     </div>
 

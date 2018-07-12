@@ -25,7 +25,7 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('authors.create');
     }
 
     /**
@@ -36,7 +36,14 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Author::create([
+            'name' => request('name'),
+            'last_name' => request('last_name'),
+            'photo' => request('photo'),
+            'desc' => request('desc')
+        ]);
+
+        return back();
     }
 
     /**
@@ -47,7 +54,7 @@ class AuthorsController extends Controller
      */
     public function show(Author $author)
     {
-        $related_books = $author->books;        
+        $related_books = $author->books;
         return view('authors.show', compact('author','related_books'));
     }
 
