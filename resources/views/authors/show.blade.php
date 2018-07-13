@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     @include('front.partials.nav')
-    <ol class="breadcrumb blue-grey lighten-3">
+    <ol class="breadcrumb blue-grey lighten-5">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item"><a href="/authors">Authors</a></li>
         <li class="breadcrumb-item active">

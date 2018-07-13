@@ -43,10 +43,6 @@ class booksController extends Controller
      */
     public function store(Request $request)
     {
-        //validation
-        // $type = $request->input('type');
-        // dd($type);
-        // dd($request->input('type'));
 
         $book = Book::create([
             'title' => request('title'),
@@ -78,9 +74,10 @@ class booksController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit($id)
     {
-        //
+        $book = Book::find($id);
+         return view('books.edit',compact('book','id'));
     }
 
     /**
@@ -90,9 +87,28 @@ class booksController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, $id)
     {
-        //
+        // $book = Book::create([
+        //     'title' => request('title'),
+        //     'author_id' => $request->input('author'),
+        //     'type_id' => $request->input('type'),
+        //     'publisher_id' => 1,
+        //     'publish_year' => request('publish_year'),
+        //     'photo' => request('photo'),
+        //     'desc' => request('desc')
+        // ]);
+        $book = Book::find($id);
+        $book->title = $request->get('title');
+        $book->author_id = $request->get('author');
+        $book->type_id = $request->get('type');
+        $book->publish_year = $request->get('publish_year');
+        $book->photo = $request->get('photo');
+        $book->desc = $request->get('desc');
+        $book->save();
+
+        return view('books.show', ['book' => Book::find($id)]);
+
     }
 
     /**

@@ -9,7 +9,7 @@
     @endsection
 
     @include('front.partials.nav')
-    <ol class="breadcrumb blue-grey lighten-3">
+    <ol class="breadcrumb blue-grey lighten-5">
         <li class="breadcrumb-item"><a href="/books">Home</a></li>
         <li class="breadcrumb-item"><a href="/authors">Authors</a></li>
         <li class="breadcrumb-item active">Create</li>
@@ -38,7 +38,10 @@
                   <label for="desc">Description: </label>
                   <textarea name="desc" rows="8" cols="80" class="form-control"></textarea>
                 </div>
-                <button type="submit" name="button" class="btn btn-indigo">Create</button>
+                <button type="submit" name="button" class="btn btn-indigo btn-sm">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Add
+                </button>
             </form>
         </div>
 

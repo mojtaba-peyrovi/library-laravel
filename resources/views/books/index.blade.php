@@ -4,11 +4,11 @@
 @endsection
 @section('content')
     @include('front.partials.nav')
-    <ol class="breadcrumb blue-grey lighten-3">
+    <ol class="breadcrumb blue-grey lighten-5">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
         <li class="breadcrumb-item active">Books</li>
     </ol>
-    <div class="container m-4">
+    <div class="container mt-4">
 
             <!--Jumbotron-->
                 <div class="jumbotron mt-4">
@@ -31,16 +31,20 @@
         <div class="row">
         @foreach ($books as $book)
 
-
-
                     <div class="col-md-2 mt-4">
-                        <span class="badge {{ $book->type->color }}">{{ $book->type->title }}</span>
+                        <span class="badge {{ $book->type->color }}">
+                            {{ $book->type->title }}
+                        </span>
                         <div class="float-right">
-                            <a href="#">
-                                <span class="badge badge-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                            <a href="/books/{{ $book->id }}/edit">
+                                <span class="badge badge-warning">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </span>
                             </a>
                             <a href="#">
-                                <span class="badge badge-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                                <span class="badge badge-danger">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </span>
                             </a>
                         </div>
 
@@ -50,8 +54,8 @@
                                 <a href="{{ $book->path() }}">
                                 <div class="mask flex-center rgba-teal-strong">
                                 <p class="white-text">Read More...</p>
-                                </a>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <a href="/books/{{ $book->id }}">
@@ -64,7 +68,6 @@
 
         @endforeach
         </div>
-
 
     </div>
 @endsection

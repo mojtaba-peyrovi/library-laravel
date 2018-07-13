@@ -14,10 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/books', 'booksController@index')->name('books-index');
-Route::get('/books/{book}', 'booksController@show')->name('books-show');
-Route::get('/book/create', 'booksController@create');
-Route::post('/books', 'booksController@store');
+// Route::get('/books', 'booksController@index')->name('books-index');
+// Route::get('/books/{book}', 'booksController@show')->name('books-show');
+// Route::get('/books/{book}/edit', 'booksController@edit')->name('books-edit');
+// Route::get('/book/create', 'booksController@create');
+// Route::post('/books', 'booksController@store');
+// Route::put('/books/{book}', 'booksController@update');
+Route::resource('books', 'booksController');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/authors', 'AuthorsController@index')->name('authors-index');
