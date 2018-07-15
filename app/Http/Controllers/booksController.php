@@ -18,7 +18,6 @@ class booksController extends Controller
     public function index()
     {
         $books = Book::all();
-
         return view('books.index', compact('books'));
     }
 
@@ -53,8 +52,9 @@ class booksController extends Controller
             'photo' => request('photo'),
             'desc' => request('desc')
         ]);
+        flash('Book Added!')->success();
 
-        return back();
+        return redirect('/books');
     }
 
     /**
@@ -106,6 +106,7 @@ class booksController extends Controller
         $book->photo = $request->get('photo');
         $book->desc = $request->get('desc');
         $book->save();
+        flash('Changes Saved!')->success();
 
         return view('books.show', ['book' => Book::find($id)]);
 
@@ -117,9 +118,12 @@ class booksController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy($id)
     {
-        //
+        $book = Book::find($id);
+        $book->delete();
+        flash('Successfully Removed!')->success();
+        return redirect('/books');
     }
 
 }

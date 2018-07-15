@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Edit:
+    Edit your book
 @endsection
 @section('content')
 
@@ -16,11 +16,9 @@
         <li class="breadcrumb-item active">Edit</li>
     </ol>
     <div class="container mt-4">
-        <div class="col-md-6 offset-md-3">
-            <h2>Edit
-                <strong>
-                    "{{ $book->title }}"
-                </strong>
+        <div class="col-md-8 offset-md-2">
+            <h2>Edit your Book:
+
             </h2>
             <hr>
             <form action="{{ action('booksController@update', $id) }}" method="post">
@@ -47,7 +45,7 @@
                     <div class="form-group">
                       <label for="author">Author: </label>
                       <select class="custom-select" name="author">
-                          <option selected value="{{ $book->author->id }}">{{ $book->author->id }}</option>
+                          <option selected value="{{ $book->author->id }}">{{ $book->author->fullName() }}</option>
 
                       </select>
                     </div>
@@ -66,7 +64,14 @@
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     Submit
                 </button>
+                <form class="" action="/books/{{ $book->id }}" method="get">
+                    <button type="submit" name="button" class="btn btn-danger btn-sm">
+                        <i class="fa fa-ban" aria-hidden="true"></i>
+                        CANCEL
+                    </button>
+                </form>
             </form>
+
         </div>
 
 

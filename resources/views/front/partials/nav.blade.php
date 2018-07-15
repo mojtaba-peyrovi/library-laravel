@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark primary-color">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="/books">
+    <a class="navbar-brand" href="/">
         <img src="{{ asset('img/logo.png') }}" alt="">
     </a>
 
@@ -26,7 +26,7 @@
                     Books</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/books">All Books</a>
-                    <a class="dropdown-item" href="/book/create">Add a Book</a>
+                    <a class="dropdown-item" href="/books/create">Add a Book</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

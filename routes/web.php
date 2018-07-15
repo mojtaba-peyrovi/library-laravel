@@ -21,6 +21,7 @@ Route::get('/', function () {
 // Route::post('/books', 'booksController@store');
 // Route::put('/books/{book}', 'booksController@update');
 Route::resource('books', 'booksController');
+Route::resource('authors', 'AuthorsController');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/authors', 'AuthorsController@index')->name('authors-index');

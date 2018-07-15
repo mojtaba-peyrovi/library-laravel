@@ -51,30 +51,7 @@
                 <hr>
                 <p class="mb-3">{{ $author->desc }}</p>
             </div>
-            @if ($author->books->count())
-                <div class="col-md-10 bg-grey-lighter mt-4">
-                    <h2>All {{ $author->name }}'s Books:</h2>
-                    <hr>
-                    <div class="row">
-                        @foreach ($related_books as $book)
-                        <div class="col-md-2 mt-4">
-                            <div class="mb-3">
 
-                                    <div class="view overlay">
-                                        <img class="z-depth-1-half" src="{{ $book->photo }}" alt="">
-                                        <a href="/books/{{ $book->id }}">
-                                        <div class="mask flex-center rgba-teal-strong">
-                                        <p class="white-text">Read More...</p>
-                                        </a>
-                                        </div>
-                                    </div>
-
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
 
 
         </div>

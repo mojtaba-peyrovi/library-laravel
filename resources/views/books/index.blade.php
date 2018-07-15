@@ -9,7 +9,7 @@
         <li class="breadcrumb-item active">Books</li>
     </ol>
     <div class="container mt-4">
-
+            @include('flash::message')
             <!--Jumbotron-->
                 <div class="jumbotron mt-4">
                     <h1 class="h1-reponsive mb-3 blue-text"><strong class="text-white">
@@ -35,18 +35,6 @@
                         <span class="badge {{ $book->type->color }}">
                             {{ $book->type->title }}
                         </span>
-                        <div class="float-right">
-                            <a href="/books/{{ $book->id }}/edit">
-                                <span class="badge badge-warning">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                </span>
-                            </a>
-                            <a href="#">
-                                <span class="badge badge-danger">
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                </span>
-                            </a>
-                        </div>
 
                         <div class="mb-3">
                             <div class="view overlay">
@@ -70,4 +58,10 @@
         </div>
 
     </div>
+@endsection
+@section('script')
+    <script>
+        $('div.alert').not('.alert-important').delay(2000).fadeOut(450);
+    </script>
+
 @endsection

@@ -41,7 +41,10 @@
                 </div>
 
 
-                <a href="/type/create" class="btn btn-outline-warning">New Type</a>
+                <a href="/type/create" class="btn btn-orange btn-sm" target="_blank">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                     New Type
+                </a>
 
                     <div class="form-group">
                       <label for="author">Author: </label>
@@ -53,7 +56,10 @@
                       </select>
                     </div>
 
-                        <a href="/author/create" class="btn btn-outline-warning">New Author</a>
+                <a href="/author/create" class="btn btn-orange btn-sm" target="_blank">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    New Author
+                </a>
 
 
                 <div class="form-group">
@@ -68,7 +74,15 @@
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     Add
                 </button>
+                <button type="" name="button" class="btn btn-green btn-sm">
+                    <i class="fa fa-table" aria-hidden="true"></i>
+                    Upload Excel File
+                </button>
+
             </form>
+
+
+
         </div>
 
 

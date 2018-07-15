@@ -32,8 +32,8 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
       <!-- MDB core JavaScript -->
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
-
-
+      <script src="/js/bootstrap-confirmation.js"></script>
+      <script src="/js/popper.js"></script>
       @yield('script')
 
       @include('front.partials.footer')

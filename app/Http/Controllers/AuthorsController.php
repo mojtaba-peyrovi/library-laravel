@@ -64,9 +64,10 @@ class AuthorsController extends Controller
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function edit(Author $author)
+    public function edit($id)
     {
-        //
+        $author = Author::find($id);
+         return view('authors.edit',compact('author','id'));
     }
 
     /**
