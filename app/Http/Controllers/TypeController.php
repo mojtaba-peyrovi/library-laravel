@@ -15,6 +15,7 @@ class TypeController extends Controller
 
     public function create()
     {
+
         return view('types.create');
     }
 
@@ -24,7 +25,7 @@ class TypeController extends Controller
             'title' => request('title'),
             'color' => request('color')
         ]);
-
+        
         return back();
     }
 }

@@ -1,59 +1,62 @@
 @extends('layouts.master')
 @section('title')
-    {{ $author->fullName() }}
+    Edit Author
 @endsection
 @section('content')
+
+    @section('stylesheets')
+
+    @endsection
+
     @include('front.partials.nav')
     <ol class="breadcrumb blue-grey lighten-5">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
         <li class="breadcrumb-item"><a href="/authors">Authors</a></li>
-        <li class="breadcrumb-item active">
-            {{ $author->fullName() }}
-        </li>
+        <li class="breadcrumb-item active">{{ $author->fullName() }}</li>
     </ol>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
+    <div class="container mt-4">
+        <div class="col-md-6 offset-md-3">
+            <h2>Edit the Author</h2>
+            <hr>
+            <form class="" action="{{ action('AuthorsController@update', $id) }}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="_method" value="PATCH">
+                <div class="form-group">
+                  <label for="name">First Name: </label>
+                  <input type="text" class="form-control" name="name" value="{{ $author->name }}">
+                </div>
 
-                  <img src="{{ $author->photo }}" alt="" class="img-thumbnail shadow-md" style="width:65%; height:auto;">
+                <div class="form-group">
+                  <label for="last_name">Last Name: </label>
+                  <input type="text" class="form-control" name="last_name" value="{{ $author->last_name }}">
+                </div>
 
-            </div>
-            <div class="col-md-6 bg-grey-lighter">
+                <div class="form-group">
+                  <label for="photo">Photo Link: </label>
+                  <input type="text" class="form-control" name="photo" value="{{ $author->photo }}">
+                  <img src="{{ $author->photo }}" alt="" class="mt-2" width="130px;">
+                </div>
+                <div class="form-group">
+                  <label for="desc">Description: </label>
+                  <textarea name="desc" rows="8" cols="80" class="form-control">{{ $author->desc }}</textarea>
+                </div>
 
-                    <h1>
-                        {{ $author->fullName() }} <span><small>(Author)</small></span>
-                    </h1>
-                    <div class="d-flex justify-content-end">
-
-                        <form method="get" action="/authors/{{ $author->id}}/edit">
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-warning btn-sm">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                                EDIT
-                            </button>
-                        </form>
-                        <form class="pull-right" action="{{ action('booksController@destroy', $author->id) }}" method="post">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="_method" value="DELETE">
-
-                            <button class="btn btn-sm btn-danger" data-toggle="confirmation"
-                                    data-btn-ok-label="Continue" data-btn-ok-class="btn-success"
-                                    data-btn-ok-icon-class="" data-btn-ok-icon-content=""
-                                    data-btn-cancel-label="" data-btn-cancel-class="btn-danger"
-                                    data-btn-cancel-icon-class="" data-btn-cancel-icon-content="close"
-                                    data-title="Are You Sure?" data-content="You will lose this book forever!">
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                    DELETE
-                            </button>
-                        </form>
-                    </div>
-
-                <hr>
-                <p class="mb-3">{{ $author->desc }}</p>
-            </div>
-
-
-
+                <button type="submit" name="button" class="btn btn-orange btn-sm">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    Submit
+                </button>
+                <form class="" action="/authors/{{ $author->id }}" method="get">
+                    <button type="submit" name="button" class="btn btn-danger btn-sm">
+                        <i class="fa fa-ban" aria-hidden="true"></i>
+                        CANCEL
+                    </button>
+                </form>
+            </form>
         </div>
+
+
     </div>
+@endsection
+@section('scripts')
+
 @endsection

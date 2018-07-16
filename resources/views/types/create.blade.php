@@ -28,7 +28,6 @@
                   <label for="color">Color: </label>
                   <select class="custom-select" name="color">
                       <option selected>Available Colors</option>
-
                             <option value="red" class="red-text">Red</option>
                             <option value="pink" class="pink-text">Pink</option>
                             <option value="purple" class="purple-text">Purple</option>

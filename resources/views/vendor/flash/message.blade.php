@@ -6,9 +6,9 @@
             top: 150px;
             right: 20px;
             z-index: 10;
-            background: #33ff33;
-            color: white;
-            /* opacity: 0.8; */
+            background: rgba(7,245,7,1);
+            color: black;
+            opacity: 0.6;
             text-align: center;
         }
     </style>

@@ -9,6 +9,7 @@
         <li class="breadcrumb-item active">Authors</li>
     </ol>
     <div class="container mt-4">
+        @include('flash::message')
     <!--Jumbotron-->
         <div class="jumbotron mt-4">
             <h1 class="h1-reponsive mb-3 blue-text"><strong class="text-white">
@@ -45,14 +46,7 @@
                         </div>
                         </a>
                     </div>
-                    <div class="float-right">
-                        <a href="#">
-                            <span class="badge badge-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
-                        </a>
-                        <a href="#">
-                            <span class="badge badge-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-                        </a>
-                    </div>
+
                 <strong>
                     <a href="/authors/{{ $author->id }}">
                         {{ $author->name }} {{ $author->last_name }}
@@ -63,4 +57,10 @@
         @endforeach
     </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $('div.alert').not('.alert-important').delay(2000).fadeOut(450);
+    </script>
+
 @endsection

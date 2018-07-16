@@ -18,6 +18,11 @@ class CreateAuthorsTable extends Migration
             $table->string('name');
             $table->string('last_name');
             $table->string('photo');
+            $table->date('birthday');
+            $table->string('birthday_place');
+            $table->string('occupation');
+            $table->string('nationality');
+            $table->string('wiki');
             $table->text('desc');
             $table->timestamps();
         });

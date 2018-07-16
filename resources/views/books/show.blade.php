@@ -23,6 +23,21 @@
                     <span>
                         ({{ $book->publish_year }})
                     </span>
+                    @if ($book->format == 'Book')
+                        <span>
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                        </span>
+                    @elseif ($book->format == 'Ebook')
+                        <span>
+                            <i class="fa fa-edge" aria-hidden="true"></i>
+                        </span>
+                    @elseif ($book->format == 'Audio')
+                        <span>
+                            <i class="fa fa-headphones" aria-hidden="true"></i>
+                        </span>
+
+                    @endif
+
                 </h1>
                 <p>
                     by <a href="/authors/{{ $book->author->id }}">
@@ -30,6 +45,12 @@
                         {{ $book->author->last_name }},
                         (Author)
                         </a>
+                        -
+                        Publisher:
+                        <a href="#">
+                            "Live Oak Media"
+                        </a>
+
                 </p>
                 <span class="badge {{ $book->type->color }}">
                     {{ $book->type->title }}
@@ -75,6 +96,6 @@
     });
     </script>
     <script>
-        $('div.alert').not('.alert-important').delay(2000).fadeOut(450);
+        $('div.alert').not('.alert-important').delay(1500).fadeOut(550);
     </script>
 @endsection

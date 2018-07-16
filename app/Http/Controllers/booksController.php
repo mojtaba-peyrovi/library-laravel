@@ -52,7 +52,7 @@ class booksController extends Controller
             'photo' => request('photo'),
             'desc' => request('desc')
         ]);
-        flash('Book Added!')->success();
+        flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Book Added!')->success();
 
         return redirect('/books');
     }
@@ -106,7 +106,7 @@ class booksController extends Controller
         $book->photo = $request->get('photo');
         $book->desc = $request->get('desc');
         $book->save();
-        flash('Changes Saved!')->success();
+        flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Changes Saved!')->success();
 
         return view('books.show', ['book' => Book::find($id)]);
 
@@ -122,7 +122,7 @@ class booksController extends Controller
     {
         $book = Book::find($id);
         $book->delete();
-        flash('Successfully Removed!')->success();
+        flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Successfully Removed!')->success();
         return redirect('/books');
     }
 

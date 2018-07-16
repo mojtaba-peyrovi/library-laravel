@@ -39,11 +39,13 @@ class AuthorsController extends Controller
         Author::create([
             'name' => request('name'),
             'last_name' => request('last_name'),
-            'photo' => request('photo'),
+            'photo' => '/img/' . request('photo'),
+
             'desc' => request('desc')
         ]);
 
-        return back();
+        flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Author Added!')->success();
+        return redirect('/authors');
     }
 
     /**
@@ -77,9 +79,17 @@ class AuthorsController extends Controller
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(Request $request, $id)
     {
-        //
+        $author = Author::find($id);
+        $author->name = $request->get('name');
+        $author->last_name = $request->get('last_name');
+        $author->photo = $request->get('photo');
+        $author->desc = $request->get('desc');
+        $author->save();
+        flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Changes Saved!')->success();
+
+        return view('authors.show', ['author' => Author::find($id), 'related_books'=> $author->books]);
     }
 
     /**
@@ -88,9 +98,12 @@ class AuthorsController extends Controller
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Author $author)
+    public function destroy($id)
     {
-        //
+        $author = Author::find($id);
+        $author->delete();
+        flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Successfully Removed!')->success();
+        return redirect('/authors');
     }
 
 

@@ -35,7 +35,7 @@
                     Authors</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/authors">All Authors</a>
-                    <a class="dropdown-item" href="/author/create">Add an Author</a>
+                    <a class="dropdown-item" href="/authors/create">Add an Author</a>
                 </div>
             </li>
 
