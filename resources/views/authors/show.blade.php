@@ -20,6 +20,7 @@
                   <ul class="list-group mt-3">
                     <li class="list-group-item">
                         <strong>Birthday:</strong> {{ $author->birthday }}
+                        <span class="float-right"> ({{ $author->getAge()}} years old)</span>
                     </li>
                     <li class="list-group-item">
                         <strong>Birth Place:</strong> {{ $author->birthday_place }}
@@ -42,7 +43,7 @@
             <div class="col-md-6 bg-grey-lighter">
 
                     <h1>
-                        {{ $author->fullName() }} <span><small>(Author)</small></span>
+                        {{ $author->fullName() }} <span><small class="text-muted"> - ({{ $author->occupation }})</small></span>
                     </h1>
                     <div class="d-flex justify-content-end">
 

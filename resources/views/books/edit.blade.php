@@ -32,20 +32,25 @@
                     <div class="form-group col-md-6">
                       <label for="author">Type: </label>
                       <select class="custom-select" name="type">
-                          <option selected value="{{ $book->type->id }}">{{ $book->type->title }}</option>
-
+                          {{-- <option selected value="{{ $book->type->id }}">{{ $book->type->title }}</option> --}}
+                              @foreach ($types as $type)
+                                  <option value="{{ $type->id }}"{{ $type->id === $book->type->id ? 'selected':'' }} >{{ $type->title }}</option>
+                              @endforeach
                       </select>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="publish_year">Publish Year: </label>
                       <input type="text" class="form-control" name="publish_year" value="{{ $book->publish_year }}">
-                    </div>
-                </div>
 
+                    </div>
+
+                </div>
                     <div class="form-group">
                       <label for="author">Author: </label>
                       <select class="custom-select" name="author">
-                          <option selected value="{{ $book->author->id }}">{{ $book->author->fullName() }}</option>
+                          @foreach ($authors as $author)
+                              <option value="{{ $author->id }}">{{ $author->fullName() }}</option>
+                          @endforeach
 
                       </select>
                     </div>
@@ -65,7 +70,7 @@
                     Submit
                 </button>
                 <form class="" action="/books/{{ $book->id }}" method="get">
-                    <button type="submit" name="button" class="btn btn-danger btn-sm">
+                    <button type="" name="button" class="btn btn-danger btn-sm">
                         <i class="fa fa-ban" aria-hidden="true"></i>
                         CANCEL
                     </button>
@@ -75,8 +80,14 @@
         </div>
 
 
+
+
+
+
+
+
     </div>
 @endsection
 @section('scripts')
-
+    
 @endsection

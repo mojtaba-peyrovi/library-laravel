@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class AuthorsController extends Controller
 {
     /**
@@ -39,8 +39,12 @@ class AuthorsController extends Controller
         Author::create([
             'name' => request('name'),
             'last_name' => request('last_name'),
-            'photo' => '/img/' . request('photo'),
-
+            'birthday' => Carbon::parse(request('birthday')),
+            'birthday_place' => request('birthday_place'),
+            'occupation' => request('occupation'),
+            'nationality' => request('nationality'),
+            'photo' => request('photo'),
+            'wiki' => request('wiki'),
             'desc' => request('desc')
         ]);
 
@@ -84,12 +88,17 @@ class AuthorsController extends Controller
         $author = Author::find($id);
         $author->name = $request->get('name');
         $author->last_name = $request->get('last_name');
+        $author->birthday = $request->get('birthday');
+        $author->birthday_place = $request->get('birthday_place');
+        $author->occupation = $request->get('occupation');
+        $author->nationality = $request->get('nationality');
         $author->photo = $request->get('photo');
         $author->desc = $request->get('desc');
         $author->save();
         flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Changes Saved!')->success();
 
-        return view('authors.show', ['author' => Author::find($id), 'related_books'=> $author->books]);
+        // return view('authors.show', ['author' => Author::find($id), 'related_books'=> $author->books]);
+        return redirect()->route('authors.show',[$author]);
     }
 
     /**

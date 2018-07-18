@@ -3,6 +3,7 @@
     {{ $book->title }}
 @endsection
 @section('content')
+    header('Location: http://www.example.com/')
     @include('front.partials.nav')
     <ol class="breadcrumb blue-grey lighten-5">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -12,31 +13,20 @@
         </li>
     </ol>
     <div class="container">
-        @include('flash::message')
+
+            @include('flash::message')
+
         <div class="row">
             <div class="col-md-4">
                 <img src="{{ $book->photo }}" alt="">
             </div>
             <div class="col-md-6 bg-grey-lighter">
                 <h1>
+                    @include('front.partials.format-badges')
                     {{ $book->title }}
                     <span>
                         ({{ $book->publish_year }})
                     </span>
-                    @if ($book->format == 'Book')
-                        <span>
-                            <i class="fa fa-book" aria-hidden="true"></i>
-                        </span>
-                    @elseif ($book->format == 'Ebook')
-                        <span>
-                            <i class="fa fa-edge" aria-hidden="true"></i>
-                        </span>
-                    @elseif ($book->format == 'Audio')
-                        <span>
-                            <i class="fa fa-headphones" aria-hidden="true"></i>
-                        </span>
-
-                    @endif
 
                 </h1>
                 <p>
@@ -52,8 +42,8 @@
                         </a>
 
                 </p>
-                <span class="badge {{ $book->type->color }}">
-                    {{ $book->type->title }}
+                <span class="badge {{ $book->type['color'] }}">
+                    {{ $book->type['title'] }}
                 </span>
 
                 <div class="d-flex justify-content-end">

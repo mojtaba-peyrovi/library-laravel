@@ -33,3 +33,6 @@ Route::get('/types', 'TypeController@index');
 Route::get('/type/create', 'TypeController@create');
 Route::post('/types', 'TypeController@store');
 Auth::routes();
+Route::get('/test',function(){
+    return view('test');
+});

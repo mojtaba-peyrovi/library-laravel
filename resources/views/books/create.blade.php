@@ -20,10 +20,24 @@
             <hr>
             <form class="" action="/books" method="post">
                 {{ csrf_field() }}
-                <div class="form-group">
-                  <label for="title">Title: </label>
-                  <input type="text" class="form-control" name="title">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                          <label for="title">Title: </label>
+                          <input type="text" class="form-control" name="title">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="format">Format: </label>
+                        <select class="custom-select" name="format">
+                            <option selected>Formats</option>
+                                  <option value="Ebook">Ebook</option>
+                                  <option value="Book">Book</option>
+                                  <option value="Audio">Audio</option>
+                        </select>
+                    </div>
                 </div>
+
                 <div class="row">
                     <div class="form-group col-md-6">
                       <label for="author">Type: </label>

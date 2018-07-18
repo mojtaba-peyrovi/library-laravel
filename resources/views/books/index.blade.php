@@ -32,8 +32,8 @@
         @foreach ($books as $book)
 
                     <div class="col-md-2 mt-4">
-                        <span class="badge {{ $book->type->color }}">
-                            {{ $book->type->title }}
+                        <span class="badge {{ $book->type['color'] }}">
+                            {{ $book->type['title'] }}
                         </span>
 
                         <div class="mb-3">

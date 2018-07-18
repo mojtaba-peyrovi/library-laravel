@@ -20,20 +20,58 @@
             <hr>
             <form class="" action="/authors" method="post">
                 {{ csrf_field() }}
-                <div class="form-group">
-                  <label for="name">First Name: </label>
-                  <input type="text" class="form-control" name="name">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="name">First Name: </label>
+                          <input type="text" class="form-control" name="name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="last_name">Last Name: </label>
+                          <input type="text" class="form-control" name="last_name">
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                  <label for="last_name">Last Name: </label>
-                  <input type="text" class="form-control" name="last_name">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="birthday">Birthday: </label>
+                          <input type="text" class="form-control" name="birthday" id="datepicker">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="birthday_place">Birth Place: </label>
+                          <input type="text" class="form-control" name="birthday_place">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="occupation">Occupation: </label>
+                          <input type="text" class="form-control" name="occupation">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="nationality">Nationality: </label>
+                          <input type="text" class="form-control" name="nationality">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
                   <label for="photo">Photo Link: </label>
                   <input type="text" class="form-control" name="photo">
                 </div>
+                <div class="form-group">
+                  <label for="wiki">Wiki Link: </label>
+                  <input type="text" class="form-control" name="wiki">
+                </div>
+
                 <div class="form-group">
                   <label for="desc">Description: </label>
                   <textarea name="desc" rows="8" cols="80" class="form-control"></textarea>
@@ -49,5 +87,9 @@
     </div>
 @endsection
 @section('scripts')
-
+    <script>
+        $( function() {
+           $( "#datepicker" ).datepicker({ dateFormat: 'yyyy-mm-dd' });
+        });
+     </script>
 @endsection

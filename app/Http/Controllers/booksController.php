@@ -10,6 +10,7 @@ use DB;
 
 class booksController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -42,14 +43,16 @@ class booksController extends Controller
      */
     public function store(Request $request)
     {
-
+        // $format = request('format');
+        // dd($format);
         $book = Book::create([
             'title' => request('title'),
             'author_id' => $request->input('author'),
             'type_id' => $request->input('type'),
             'publisher_id' => 1,
             'publish_year' => request('publish_year'),
-            'photo' => request('photo'),
+            'format' => request('format'),
+            'photo' => $request->input('photo'),
             'desc' => request('desc')
         ]);
         flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Book Added!')->success();
@@ -77,7 +80,9 @@ class booksController extends Controller
     public function edit($id)
     {
         $book = Book::find($id);
-         return view('books.edit',compact('book','id'));
+        $authors = Author::all();
+        $types = Type::all();
+         return view('books.edit',compact('book','id','types','authors'));
     }
 
     /**
@@ -106,9 +111,12 @@ class booksController extends Controller
         $book->photo = $request->get('photo');
         $book->desc = $request->get('desc');
         $book->save();
+
         flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Changes Saved!')->success();
 
-        return view('books.show', ['book' => Book::find($id)]);
+        // return view('books.show', ['book' => Book::find($id)]);
+        // return redirect('/books/{book}');
+        return redirect()->route('books.show',[$book]);
 
     }
 

@@ -21,15 +21,53 @@
             <form class="" action="{{ action('AuthorsController@update', $id) }}" method="post">
                 {{ csrf_field() }}
                 <input type="hidden" name="_method" value="PATCH">
-                <div class="form-group">
-                  <label for="name">First Name: </label>
-                  <input type="text" class="form-control" name="name" value="{{ $author->name }}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="name">First Name: </label>
+                          <input type="text" class="form-control" name="name" value="{{ $author->name }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="last_name">Last Name: </label>
+                          <input type="text" class="form-control" name="last_name" value="{{ $author->last_name }}">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="last_name">Last Name: </label>
-                  <input type="text" class="form-control" name="last_name" value="{{ $author->last_name }}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="birthday">Birthday: </label>
+                          <input type="text" class="form-control" name="birthday" value="{{ $author->birthday }}" id="datepicker">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="birthday_place">Birth Place: </label>
+                          <input type="text" class="form-control" name="birthday_place" value="{{ $author->birthday_place }}">
+                        </div>
+                    </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="occupation">Occupation: </label>
+                          <input type="text" class="form-control" name="occupation" value="{{ $author->occupation }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="nationality">Nationality: </label>
+                          <input type="text" class="form-control" name="nationality" value="{{ $author->nationality }}">
+                        </div>
+                    </div>
+                </div>
+
+
+
 
                 <div class="form-group">
                   <label for="photo">Photo Link: </label>
@@ -58,5 +96,9 @@
     </div>
 @endsection
 @section('scripts')
-
+    <script>
+        $( function() {
+           $( "#datepicker" ).datepicker();
+        });
+     </script>
 @endsection

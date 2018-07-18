@@ -49,7 +49,8 @@
 
                 <strong>
                     <a href="/authors/{{ $author->id }}">
-                        {{ $author->name }} {{ $author->last_name }}
+                        {{ $author->fullName() }}
+                        ({{ $author->getAge()}})
                     </a>
                 </strong>
             </div>
