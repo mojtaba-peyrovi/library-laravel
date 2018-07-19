@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Author;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Input;
+use Intervention\Image\ImageManagerStatic as Image;
+
 class AuthorsController extends Controller
 {
     /**
@@ -14,8 +17,7 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        $authors = Author::all();
-        return view('authors.index', compact('authors'));
+        return view('authors.index');
     }
 
     /**
@@ -34,19 +36,31 @@ class AuthorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Image $image)
     {
+        if(Input::hasFile('image'))
+        {
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->resize(260, 346);
+            $image_resize->save(public_path('img/authors/' .$filename));
+        };
+
         Author::create([
-            'name' => request('name'),
-            'last_name' => request('last_name'),
+            'name' => ucfirst(request('name')),
+            'last_name' => ucfirst(request('last_name')),
             'birthday' => Carbon::parse(request('birthday')),
             'birthday_place' => request('birthday_place'),
             'occupation' => request('occupation'),
             'nationality' => request('nationality'),
-            'photo' => request('photo'),
+            'photo' => '/img/authors/'. $filename,
             'wiki' => request('wiki'),
             'desc' => request('desc')
         ]);
+
+
+
 
         flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Author Added!')->success();
         return redirect('/authors');

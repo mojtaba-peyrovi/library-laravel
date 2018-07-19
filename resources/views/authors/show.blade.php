@@ -70,6 +70,18 @@
                         </form>
                     </div>
 
+                @if (! $author->books->count())
+                    <div class="bg-yellow m-2 p-2">
+                        You haven't yet added any book for
+                        <strong>{{ $author->name }}</strong>
+                        .
+                        <a href="{{ route('authors.create')}}" class="float-right text-info font-bold">
+                            Add a book now!
+                        </a>
+                    </div>
+                @endif
+
+
                 <hr>
                 <p class="mb-3">{{ $author->desc }}</p>
             </div>
@@ -86,7 +98,7 @@
 
                                     <div class="view overlay">
                                         <img class="z-depth-1-half" src="{{ $book->photo }}" alt="">
-                                        <a href="/books/{{ $book->id }}">
+                                        <a href="{{ $book->photo }}">
                                         <div class="mask flex-center rgba-teal-strong">
                                         <p class="white-text">Read More...</p>
                                         </a>

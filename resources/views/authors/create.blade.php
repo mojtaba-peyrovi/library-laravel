@@ -18,7 +18,7 @@
         <div class="col-md-6 offset-md-3">
             <h2>Create an Author</h2>
             <hr>
-            <form class="" action="/authors" method="post">
+            <form class="" action="/authors" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-md-6">
@@ -64,9 +64,11 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="photo">Photo Link: </label>
-                  <input type="text" class="form-control" name="photo">
+                  <label for="image">Photo:</label>
+                  <input type="file" class="form-control" id="image" name="image">
+                  <p class="help-block text-right text-muted">Best Fit: 260x346(px)</p>
                 </div>
+
                 <div class="form-group">
                   <label for="wiki">Wiki Link: </label>
                   <input type="text" class="form-control" name="wiki">
@@ -89,7 +91,10 @@
 @section('scripts')
     <script>
         $( function() {
-           $( "#datepicker" ).datepicker({ dateFormat: 'yyyy-mm-dd' });
+           $( "#datepicker" ).datepicker({
+                dateFormat: 'yy-mm-dd',
+
+            });
         });
      </script>
 @endsection

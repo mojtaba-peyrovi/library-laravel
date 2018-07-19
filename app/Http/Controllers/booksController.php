@@ -6,10 +6,19 @@ use App\Book;
 use App\Author;
 use App\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use DB;
 
 class booksController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $authors = Author::all();
+    //     $types = Type::all();
+    //
+    //     View::share('authors',$authors);
+    //     View::share('types',$types);
+    // }
 
     /**
      * Display a listing of the resource.
@@ -30,9 +39,8 @@ class booksController extends Controller
     public function create()
     {
         $books = Book::with('author')->get();
-        $authors = Author::all();
-        $types = Type::all();
-        return view('books.create',compact('authors','books','types'));
+                
+        return view('books.create',compact('books'));
     }
 
     /**
@@ -43,8 +51,6 @@ class booksController extends Controller
      */
     public function store(Request $request)
     {
-        // $format = request('format');
-        // dd($format);
         $book = Book::create([
             'title' => request('title'),
             'author_id' => $request->input('author'),
@@ -80,9 +86,8 @@ class booksController extends Controller
     public function edit($id)
     {
         $book = Book::find($id);
-        $authors = Author::all();
-        $types = Type::all();
-         return view('books.edit',compact('book','id','types','authors'));
+
+         return view('books.edit',compact('book','id'));
     }
 
     /**
@@ -94,15 +99,7 @@ class booksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $book = Book::create([
-        //     'title' => request('title'),
-        //     'author_id' => $request->input('author'),
-        //     'type_id' => $request->input('type'),
-        //     'publisher_id' => 1,
-        //     'publish_year' => request('publish_year'),
-        //     'photo' => request('photo'),
-        //     'desc' => request('desc')
-        // ]);
+
         $book = Book::find($id);
         $book->title = $request->get('title');
         $book->author_id = $request->get('author');

@@ -32,29 +32,26 @@
         <div class="row">
         @foreach ($authors as $author)
 
-
-
-        <div class="col-md-2 mt-4">
-
-            <div class="mb-3">
-
-                    <div class="view overlay">
-                        <img class="z-depth-1-half" src="{{ $author->photo }}">
-                        <a href="/authors/{{ $author->id }}">
-                        <div class="mask flex-center rgba-teal-strong">
-                        <p class="white-text">Read More...</p>
+                <div class="col-md-2 mt-4">
+                    <div class="mb-3">
+                        <div class="view overlay">
+                            <img class="z-depth-1-half" src="{{ $author->photo }}">
+                            <a href="/authors/{{ $author->id }}">
+                            <div class="mask flex-center rgba-teal-strong">
+                            <p class="white-text">Read More...</p>
+                            </div>
+                            </a>
                         </div>
-                        </a>
-                    </div>
+                        <strong>
+                            <a href="/authors/{{ $author->id }}">
+                                {{ $author->fullName() }}
 
-                <strong>
-                    <a href="/authors/{{ $author->id }}">
-                        {{ $author->fullName() }}
-                        ({{ $author->getAge()}})
-                    </a>
-                </strong>
-            </div>
-        </div>
+                                ({{ $author->books->count()}})
+                            </a>
+                        </strong>
+                    </div>
+                </div>
+
         @endforeach
     </div>
     </div>
