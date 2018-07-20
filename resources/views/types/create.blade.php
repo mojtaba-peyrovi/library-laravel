@@ -28,25 +28,7 @@
                   <label for="color">Color: </label>
                   <select class="custom-select" name="color">
                       <option selected>Available Colors</option>
-                            <option value="red" class="red-text">Red</option>
-                            <option value="pink" class="pink-text">Pink</option>
-                            <option value="purple" class="purple-text">Purple</option>
-                            <option value="deep-purple" class="deep-purple-text">Deep-Purple</option>
-                            <option value="indigo" class="indigo-text">Indigo</option>
-                            <option value="blue" class="blue-text">blue</option>
-                            <option value="light-blue" class="light-blue-text">light-blue</option>
-                            <option value="cyan" class="cyan-text">cyan</option>
-                            <option value="teal" class="teal-text">teal</option>
-                            <option value="green" class="green-text">green</option>
-                            <option value="light-green" class="light-green-text">light-green</option>
-                            <option value="lime" class="lime-text">lime</option>
-                            <option value="yellow" class="yellow-text">yellow</option>
-                            <option value="amber" class="amber-text">amber</option>
-                            <option value="orange" class="orange-text">orange</option>
-                            <option value="deep-orange" class="deep-orange-text">deep-orange</option>
-                            <option value="brown" class="brown-text">brown</option>
-                            <option value="grey" class="grey-text">grey</option>
-                            <option value="blue-grey" class="blue-grey-text">blue-grey</option>
+                            @include('front.partials.type-color-options')
                   </select>
                 </div>
                 <button type="submit" name="button" class="btn btn-indigo btn-sm">

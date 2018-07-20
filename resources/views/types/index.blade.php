@@ -30,16 +30,34 @@
             <!--Jumbotron-->
         <div class="row">
         @foreach ($types as $type)
-
-
-
                     <div class="col-md-2 mt-4">
-                        <span class="badge {{ $type->color }}">{{ $type->title }}</span>
+
                     </div>
-
         @endforeach
+            <div class="col-md-8 offset-md-2">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Color</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      @foreach ($types as $type)
+                        <tr>
+                          <th scope="row">{{ $type->id }}</th>
+                          <td>{{ $type->title }}</td>
+                          <td>
+                              <span class="badge {{ $type->color }}">
+                                  {{ $type->title }}
+                              </span>
+                          </td>
+                        </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+            </div>
         </div>
-
-
     </div>
 @endsection

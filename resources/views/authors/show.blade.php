@@ -72,10 +72,10 @@
 
                 @if (! $author->books->count())
                     <div class="bg-yellow m-2 p-2">
-                        You haven't yet added any book for
+                        You haven't added any book for
                         <strong>{{ $author->name }}</strong>
-                        .
-                        <a href="{{ route('authors.create')}}" class="float-right text-info font-bold">
+                        yet!
+                        <a href="{{ route('books.create')}}" class="float-right text-info font-bold">
                             Add a book now!
                         </a>
                     </div>
@@ -98,7 +98,7 @@
 
                                     <div class="view overlay">
                                         <img class="z-depth-1-half" src="{{ $book->photo }}" alt="">
-                                        <a href="{{ $book->photo }}">
+                                        <a href="/books/{{ $book->id }}">
                                         <div class="mask flex-center rgba-teal-strong">
                                         <p class="white-text">Read More...</p>
                                         </a>
@@ -113,10 +113,7 @@
                         @endforeach
                     </div>
                 </div>
-
             @endif
-
-
         </div>
     </div>
 @endsection

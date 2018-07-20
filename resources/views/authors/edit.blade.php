@@ -5,7 +5,7 @@
 @section('content')
 
     @section('stylesheets')
-
+        <link rel="stylesheet" href="/css/bootstrap-imageupload.css">
     @endsection
 
     @include('front.partials.nav')
@@ -94,7 +94,10 @@
 
 
     </div>
+    
+
 @endsection
+
 @section('scripts')
     <script>
         $( function() {

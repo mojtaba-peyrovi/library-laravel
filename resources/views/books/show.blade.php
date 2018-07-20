@@ -3,7 +3,6 @@
     {{ $book->title }}
 @endsection
 @section('content')
-    header('Location: http://www.example.com/')
     @include('front.partials.nav')
     <ol class="breadcrumb blue-grey lighten-5">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -30,9 +29,9 @@
 
                 </h1>
                 <p>
-                    by <a href="/authors/{{ $book->author->id }}">
-                        {{ $book->author->name }}
-                        {{ $book->author->last_name }},
+                    by <a href="/authors/{{ $book->author['id'] }}">
+                        {{ $book->author['name'] }}
+                        {{ $book->author['last_name'] }},
                         (Author)
                         </a>
                         -

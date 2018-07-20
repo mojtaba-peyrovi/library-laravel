@@ -23,7 +23,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet" >
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+
     <script>
       $( function() {
         $( "#datepicker" ).datepicker();
@@ -47,7 +47,10 @@
       <script src="/js/bootstrap-confirmation.js"></script>
       <script src="/js/popper.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js" charset="utf-8"></script>
-
+      <script src="/js/bootstrap-imageupload.js" charset="utf-8"></script>
+      <script type="text/javascript">
+         $('.img-upload').imgupload();
+      </script>
       @yield('script')
 
       @include('front.partials.footer')

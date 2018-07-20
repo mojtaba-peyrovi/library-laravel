@@ -88,11 +88,18 @@
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     Add
                 </button>
-                <button type="" name="button" class="btn btn-green btn-sm">
-                    <i class="fa fa-table" aria-hidden="true"></i>
-                    Upload Excel File
-                </button>
+            </form>
 
+            <h2 class="mt-5">Add Books in Bulk</h2>
+            <hr>
+
+            <form method="post" action="/books/create/bulk" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <div class="form-group">
+                <label for="upload-file">Upload</label>
+                <input type="file" name="upload-file" class="form-control">
+              </div>
+              <input type="submit" name="submit" value="Upload" class="btn btn-indigo btn-sm">
             </form>
 
 

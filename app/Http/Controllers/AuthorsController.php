@@ -38,12 +38,13 @@ class AuthorsController extends Controller
      */
     public function store(Request $request,Image $image)
     {
+         //image upload
         if(Input::hasFile('image'))
         {
             $image = $request->file('image');
             $filename = $image->getClientOriginalName();
             $image_resize = Image::make($image->getRealPath());
-            $image_resize->resize(260, 346);
+            $image_resize->fit(260, 346);
             $image_resize->save(public_path('img/authors/' .$filename));
         };
 

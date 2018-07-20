@@ -1,14 +1,14 @@
 @if ($book->format == 'Book')
     <span>
-        <img src="/img/book.png" alt="">
+        <img src="/img/book-badge.png" alt="" style="width:30px;">
     </span>
 @elseif ($book->format == 'Ebook')
     <span>
-        <img src="/img/book-badge.png" alt="" style="width:30px;">
+        <img src="/img/ebook-badge.png" alt="" style="width:30px;">
     </span>
 @elseif ($book->format == 'Audio')
     <span>
-        <i class="fa fa-headphones" aria-hidden="true"></i>
+        <img src="/img/audio-book-badge.png" alt="" style="width:30px;">
     </span>
 
 @endif

@@ -26,7 +26,7 @@
                     Books</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/books">All Books</a>
-                    <a class="dropdown-item" href="/books/create">Add a Book</a>
+                    <a class="dropdown-item" href="/books/create">Add More Books</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -35,7 +35,7 @@
                     Authors</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/authors">All Authors</a>
-                    <a class="dropdown-item" href="/authors/create">Add an Author</a>
+                    <a class="dropdown-item" href="/authors/create">Add More Authors</a>
                 </div>
             </li>
 

@@ -19,13 +19,28 @@
                         Find books you like here.
                     </p>
                     <hr class="my-4">
-                    <!-- category badges -->
-                    <span class="badge badge-pill pink">Default</span>
-                    <span class="badge badge-pill light-blue">Primary</span>
-                    <span class="badge badge-pill indigo">Success</span>
-                    <span class="badge badge-pill purple">Info</span>
-                    <span class="badge badge-pill orange">Warning</span>
-                    <span class="badge badge-pill green">Danger</span>
+                    <!-- search form -->
+                    <form class="form-inline d-flex justify-content-center">
+                      <label class="sr-only" for="inlineFormInputName2">Name</label>
+                      <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
+
+                      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+                      <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">@</div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+                      </div>
+
+                      <div class="form-check mb-2 mr-sm-2">
+                        <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                        <label class="form-check-label" for="inlineFormCheck">
+                          Remember me
+                        </label>
+                      </div>
+
+                      <button type="submit" class="btn btn-warning btn-sm mb-2">Search</button>
+                    </form>
                 </div>
             <!--Jumbotron-->
         <div class="row">
