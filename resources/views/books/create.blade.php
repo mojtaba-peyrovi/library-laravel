@@ -15,6 +15,7 @@
         <li class="breadcrumb-item active">Create</li>
     </ol>
     <div class="container mt-4">
+        @include('flash::message')
         <div class="col-md-6 offset-md-3">
             <h2>Create a Book</h2>
             <hr>

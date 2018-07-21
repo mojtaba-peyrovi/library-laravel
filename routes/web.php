@@ -34,6 +34,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/types', 'TypeController@index');
 Route::get('/type/create', 'TypeController@create');
 Route::post('/types', 'TypeController@store');
+
+// Route::get('/publishers', 'publishersController@index');
+Route::resource('/publishers', 'PublisherController');
 Auth::routes();
 Route::get('/test',function(){
     return view('test');

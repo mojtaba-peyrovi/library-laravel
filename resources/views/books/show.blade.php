@@ -36,8 +36,8 @@
                         </a>
                         -
                         Publisher:
-                        <a href="#">
-                            "Live Oak Media"
+                        <a href="/publishers/{{ $book->publisher->id }}">
+                            {{ $book->publisher->name }}
                         </a>
 
                 </p>
