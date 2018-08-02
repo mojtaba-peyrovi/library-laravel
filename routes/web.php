@@ -31,9 +31,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/author/create', 'AuthorsController@create')->name('authors-create');
 // Route::post('/authors', 'AuthorsController@store');
 
-Route::get('/types', 'TypeController@index');
-Route::get('/type/create', 'TypeController@create');
-Route::post('/types', 'TypeController@store');
+// Route::get('/types', 'TypeController@index');
+// Route::get('/type/create', 'TypeController@create');
+// Route::post('/types', 'TypeController@store');
+// Route::get('/types/{type}/edit', 'TypeController@edit')->name('type-edit');
+// Route::get('/types/{type}', 'TypeController@show');
+
+Route::resource('types', 'TypeController');
 
 // Route::get('/publishers', 'publishersController@index');
 Route::resource('/publishers', 'PublisherController');

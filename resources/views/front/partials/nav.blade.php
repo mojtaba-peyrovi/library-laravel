@@ -68,15 +68,30 @@
         </form> --}}
 
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a href="" class="nav-link">Register</a>
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    Login
-                </a>
-            </li>
+
+            @if (auth::check())
+                <li class="nav-item">
+                    <a href="" class="nav-link bg-white text-warning font-bold">
+                        {{ auth::user()->name}}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        Logout
+                    </a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a href="" class="nav-link">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        Login
+                    </a>
+                </li>
+            @endif
+
 
 
         </ul>
