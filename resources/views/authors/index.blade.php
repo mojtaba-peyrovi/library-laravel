@@ -28,7 +28,9 @@
             <span class="badge badge-pill green">Danger</span>
         </div>
     <!--Jumbotron-->
-
+        <a href="authors/create" class="text-orange font-bold d-flex justify-content-end" target="_blank">
+            New Author
+        </a>
         <div class="row">
         @foreach ($authors as $author)
 

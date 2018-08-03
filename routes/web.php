@@ -24,6 +24,12 @@ Route::resource('books', 'booksController');
 Route::Post('books/create/bulk', 'booksController@uploadBulk');
 Route::resource('authors', 'AuthorsController');
 
+//book search
+Route::get('/ebooks', 'bookSearchController@ebooks');
+Route::get('/physical-books', 'bookSearchController@books');
+Route::get('/audio-books', 'bookSearchController@audio');
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::get('/authors', 'AuthorsController@index')->name('authors-index');

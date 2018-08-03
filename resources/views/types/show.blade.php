@@ -18,10 +18,10 @@
         <div class="row">
             <div class="col-md-6 offset-md-3 bg-grey-lighter p-3">
                 <h1>
-                    <span class="badge {{ $type->color }} col-md-6 text-capitalize mr-4" style="width:130px;">
+                    {{ $type->title }} <br>
+                    <div class="badge {{ $type->color }} col-md-6 text-capitalize mr-4" style="width:100px; font-size:14px;">
                         {{ $type->color }}
-                    </span>
-                    {{ $type->title }}
+                    </div>
                 </h1>
 
                 <div class="d-flex justify-content-end">
@@ -47,12 +47,12 @@
                         </button>
                     </form>
                 </div>
-
-
-
+                <a href="/types" class="float-right mt-3">
+                    See all Types
+                </a>
             </div>
         </div>
-    </div>
+     </div>
 @endsection
 @section('script')
     <script type="text/javascript">

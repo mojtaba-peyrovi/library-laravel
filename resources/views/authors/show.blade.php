@@ -42,9 +42,10 @@
             </div>
             <div class="col-md-6 bg-grey-lighter">
 
-                    <h1>
+                    <h1 class="font-bold">
                         {{ $author->fullName() }} <span><small class="text-muted"> - ({{ $author->occupation }})</small></span>
                     </h1>
+
                     <div class="d-flex justify-content-end">
 
                         <form method="get" action="/authors/{{ $author->id }}/edit">
@@ -70,6 +71,7 @@
                         </form>
                     </div>
 
+
                 @if (! $author->books->count())
                     <div class="bg-yellow m-2 p-2">
                         You haven't added any book for
@@ -83,6 +85,9 @@
 
 
                 <hr>
+                <a href="/authors" class="text-orange font-bold d-flex justify-content-end mr-2 mb-3" target="_blank">
+                    All Authors
+                </a>
                 <p class="mb-3">{{ $author->desc }}</p>
             </div>
 

@@ -7,7 +7,9 @@ use App\Author;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Requests\CsvImportRequest;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
+use Intervention\Image\ImageManagerStatic as Image;
 use DB;
 use Validator;
 
@@ -29,7 +31,7 @@ class booksController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = Book::paginate(6);
         return view('books.index', compact('books'));
     }
 
@@ -53,14 +55,24 @@ class booksController extends Controller
      */
     public function store(Request $request)
     {
+        //image upload
+       if(Input::hasFile('image'))
+       {
+           $image = $request->file('image');
+           $filename = $image->getClientOriginalName();
+           $image_resize = Image::make($image->getRealPath());
+           $image_resize->fit(260, 346);
+           $image_resize->save(public_path('img/books/' .$filename));
+       };
+
         $book = Book::create([
             'title' => ucwords(request('title')),
             'author_id' => $request->input('author'),
             'type_id' => $request->input('type'),
             'publisher_id' => 1,
             'publish_year' => request('publish_year'),
+            'photo' => '/img/books/'. $filename,
             'format' => request('format'),
-            'photo' => $request->input('photo'),
             'desc' => request('desc')
         ]);
         flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Book Added!')->success();
@@ -237,4 +249,6 @@ class booksController extends Controller
         return redirect('/books');
 
         }
+
+
     }

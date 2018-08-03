@@ -26,7 +26,10 @@
                     Books</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/books">All Books</a>
-                    <a class="dropdown-item" href="/books/create">Add More Books</a>
+                    <a class="dropdown-item" href="/ebooks">Ebooks</a>
+                    <a class="dropdown-item" href="/physical-books">Physical Books</a>
+                    <a class="dropdown-item" href="/audio-books">Audio Books</a>
+                    <a class="dropdown-item" href="/books/create" style="background-color:orange;">Add More Books</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -35,7 +38,7 @@
                     Authors</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/authors">All Authors</a>
-                    <a class="dropdown-item" href="/authors/create">Add More Authors</a>
+                    <a class="dropdown-item" href="/authors/create" style="background-color:orange;">Add More Authors</a>
                 </div>
             </li>
 
@@ -45,16 +48,16 @@
                     Types(Genres)</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/types">All Types</a>
-                    <a class="dropdown-item" href="/type/create">Add a Type</a>
+                    <a class="dropdown-item" href="/types/create" style="background-color:orange;">Add a Type</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-pencil"></i>
+                    <i class="fa fa-flag"></i>
                     Publishers</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/publishers">All Publishers</a>
-                    <a class="dropdown-item" href="/publishers/create">Add a Publisher</a>
+                    <a class="dropdown-item" href="/publishers/create" style="background-color:orange;">Add a Publisher</a>
                 </div>
             </li>
 

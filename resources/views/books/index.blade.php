@@ -43,6 +43,9 @@
                     </form>
                 </div>
             <!--Jumbotron-->
+            <a href="books/create" class="text-orange font-bold d-flex justify-content-end" target="_blank">
+                New Book
+            </a>
         <div class="row">
         @foreach ($books as $book)
 
@@ -65,14 +68,17 @@
                             {{ $book->title }}
                             ({{ $book->publish_year }})
                         </a>
-
-
                     </div>
 
         @endforeach
-        </div>
 
+        </div>
+        <span class="d-flex justify-content-center mt-3">
+            {{ $books->links() }}
+        </span>
     </div>
+
+
 @endsection
 @section('script')
     <script>

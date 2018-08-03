@@ -19,7 +19,7 @@
         <div class="col-md-6 offset-md-3">
             <h2>Create a Book</h2>
             <hr>
-            <form class="" action="/books" method="post">
+            <form class="" action="/books" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-md-8">
@@ -56,12 +56,12 @@
                 </div>
 
 
-                <a href="/type/create" class="btn btn-orange btn-sm" target="_blank">
+                <a href="/types/create" class="text-orange float-right" target="_blank">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                      New Type
                 </a>
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                       <label for="author">Author: </label>
                       <select class="custom-select" name="author">
                           <option selected>Pick an author</option>
@@ -71,16 +71,23 @@
                       </select>
                     </div>
 
-                <a href="/author/create" class="btn btn-orange btn-sm" target="_blank">
+                <a href="/authors/create" class="text-orange float-right" target="_blank">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     New Author
                 </a>
 
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="photo">Photo Link: </label>
                   <input type="text" class="form-control" name="photo">
+                </div> --}}
+                
+                <div class="form-group" style="margin-top:30px;">
+                  <label for="image">Photo:</label>
+                  <input type="file" class="form-control" id="image" name="image">
+                  <p class="help-block text-right text-muted">Best Fit: 260x346(px)</p>
                 </div>
+
                 <div class="form-group">
                   <label for="desc">Description: </label>
                   <textarea name="desc" rows="8" cols="80" class="form-control"></textarea>

@@ -21,6 +21,8 @@ class BooksComposer
 
     public function bookIndexComposer($view)
     {
-        $view->with('books',Book::all());
+
+        // $view->with('books', Book::all());
+        // $view->with('books',Book::where('format', 'Ebook')->get());
     }
 }

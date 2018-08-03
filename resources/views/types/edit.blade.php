@@ -36,7 +36,9 @@
                 <button type="submit" name="button" class="btn btn-info btn-sm">
                     Submit
                 </button>
-
+                <a href="/types" class="float-right">
+                    See all Types
+                </a>
             </form>
             <div class="mt-3">@include('front.partials.errors')</div>
         </div>
