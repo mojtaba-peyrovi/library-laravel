@@ -22,6 +22,7 @@ class CreateAuthorsTable extends Migration
             $table->string('birthday_place');
             $table->string('occupation');
             $table->string('nationality');
+            $table->boolean('favorite');
             $table->string('wiki');
             $table->text('desc');
             $table->timestamps();

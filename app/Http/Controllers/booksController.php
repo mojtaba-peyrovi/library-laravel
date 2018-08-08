@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\View;
 use Intervention\Image\ImageManagerStatic as Image;
 use DB;
 use Validator;
+use Carbon\Carbon;
 
 class booksController extends Controller
 {
@@ -70,10 +71,13 @@ class booksController extends Controller
             'author_id' => $request->input('author'),
             'type_id' => $request->input('type'),
             'publisher_id' => 1,
+            'favorite' => $request->input('favorite'),
+            'read_date' => Carbon::parse(request('read_date')),
             'publish_year' => request('publish_year'),
             'photo' => '/img/books/'. $filename,
             'format' => request('format'),
-            'desc' => request('desc')
+            'desc' => request('desc'),
+            'quotes' => request('quotes')
         ]);
         flash('<i class="fa fa-comment-o" aria-hidden="true"></i> Book Added!')->success();
 
@@ -88,7 +92,11 @@ class booksController extends Controller
      */
     public function show(Book $book)
     {
-        return view('books.show', compact('book'));
+        $self = Book::find($book)->all();
+        $related_books = Book::where('type_id', $book->type_id)->get();
+        $final_related = $related_books->diff($self);
+        // dd($final);
+        return view('books.show', compact('book','final_related'));
     }
 
     /**

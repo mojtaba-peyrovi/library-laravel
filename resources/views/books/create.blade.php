@@ -77,20 +77,33 @@
                 </a>
 
 
-                {{-- <div class="form-group">
-                  <label for="photo">Photo Link: </label>
-                  <input type="text" class="form-control" name="photo">
-                </div> --}}
-                
+
                 <div class="form-group" style="margin-top:30px;">
                   <label for="image">Photo:</label>
                   <input type="file" class="form-control" id="image" name="image">
                   <p class="help-block text-right text-muted">Best Fit: 260x346(px)</p>
                 </div>
+                <hr class="mt-4">
+                <div class="row">
+                    <div class="form-group" style="margin-left:12px;">
+                      <label for="read_date">Read date: </label>
+                      <input type="text" class="form-control" name="read_date" id="datepicker">
+                    </div>
+                    <div class="form-check mb-4 mt-3 offset-md-2">
+                        <input type="hidden" name="favorite" value="0">
+                        <input type="checkbox" class="form-check-input mt-4" name="favorite" value="1">
+                       <label class="form-check-label mt-3 ml-2" for="favorite">Make it favorite</label>
+                    </div>
+                </div>
 
                 <div class="form-group">
-                  <label for="desc">Description: </label>
+                  <label for="desc">About this book: </label>
                   <textarea name="desc" rows="8" cols="80" class="form-control"></textarea>
+                </div>
+
+                <div class="form-group mt-4">
+                  <label for="quotes">Quotes: </label>
+                  <textarea name="quotes" rows="8" cols="80" class="form-control"></textarea>
                 </div>
                 <button type="submit" name="button" class="btn btn-indigo btn-sm">
                     <i class="fa fa-plus" aria-hidden="true"></i>
@@ -118,5 +131,12 @@
     </div>
 @endsection
 @section('scripts')
+    <script>
+        $( function() {
+           $( "#datepicker" ).datepicker({
+                dateFormat: 'yy-mm-dd',
 
+            });
+        });
+     </script>
 @endsection

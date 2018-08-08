@@ -19,9 +19,13 @@ class CreateBooksTable extends Migration
             $table->unsignedInteger('publisher_id');
             $table->unsignedInteger('type_id');
             $table->year('publish_year');
+            $table->date('read_date');
             $table->string('title');
             $table->string('photo');
             $table->string('format');
+            $table->unsignedInteger('rate');
+            $table->boolean('favorite');
+            $table->longText('quotes');
             $table->longText('desc');
             $table->timestamps();
         });

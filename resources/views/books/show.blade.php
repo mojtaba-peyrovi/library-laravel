@@ -11,7 +11,7 @@
             {{ $book->title }}
         </li>
     </ol>
-    <div class="container">
+    <div class="container" style="margin-bottom:100px; margin-top:100px;">
 
             @include('flash::message')
 
@@ -19,7 +19,7 @@
             <div class="col-md-4">
                 <img src="{{ $book->photo }}" alt="">
             </div>
-            <div class="col-md-6 bg-grey-lighter">
+            <div class="col-md-6 bg-grey-lighter p-4">
                 <h1>
                     @include('front.partials.format-badges')
                     {{ $book->title }}
@@ -36,14 +36,23 @@
                         </a>
                         -
                         Publisher:
-                        <a href="/publishers/{{ $book->publisher->id }}">
-                            {{ $book->publisher->name }}
+                        <a href="/publishers/{{ $book->publisher['id']}}">
+                            {{ $book->publisher['name'] }}
                         </a>
 
                 </p>
-                <span class="badge {{ $book->type['color'] }}">
+                <span class="badge {{ $book->type['color'] }} mt-3">
                     {{ $book->type['title'] }}
                 </span>
+                <span class="rates ml-2">
+                    <img src="/img/star.png" style="width:15px;height:15px;">
+                    <img src="/img/star.png" style="width:15px;height:15px;">
+                    <img src="/img/star.png" style="width:15px;height:15px;">
+                    <img src="/img/star.png" style="width:15px;height:15px;">
+                    <img src="/img/star-off.png" style="width:15px;height:15px;">
+                    <small class="ml-2 text-muted">(4.0)</small>
+                </span>
+
 
                 <div class="d-flex justify-content-end">
 
@@ -72,10 +81,50 @@
 
 
                 <hr>
+                <h6 class="font-bold mb-2">About the book:</h6>
                 <p>{{ $book->desc }}</p>
             </div>
+            <div class="col-md-6 offset-md-4 bg-grey-lighter mt-4 p-4">
+                <h6 class="font-bold mb-2">Quotes:</h6>
+                <p>{{ $book->quotes }}</p>
+            </div>
+
         </div>
+
     </div>
+    @if ($final_related->count())
+        <div class="col-md-12 bg-grey-lighter mt-4 pt-3">
+            <h2>Related Books:</h2>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    @foreach ($final_related as $book)
+                    <div class="col-md-2 mt-4">
+                        @include('flash::message')
+                        <div class="mb-3">
+
+                                <div class="view overlay">
+                                    <img class="z-depth-1-half" src="{{ $book->photo }}" alt="">
+                                    <a href="/books/{{ $book->id }}">
+                                    <div class="mask flex-center rgba-teal-strong">
+                                    <p class="white-text">Read More...</p>
+                                    </a>
+                                    </div>
+                                </div>
+                                <a href="/books/{{ $book->id }}" class="mt-2">
+                                    {{ $book->title }}
+                                    ( {{ $book->publish_year }})
+                                </a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
+
+
+
 @endsection
 @section('script')
     <script type="text/javascript">

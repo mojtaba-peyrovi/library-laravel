@@ -56,6 +56,7 @@ class AuthorsController extends Controller
             'occupation' => request('occupation'),
             'nationality' => request('nationality'),
             'photo' => '/img/authors/'. $filename,
+            'favorite' => request('favorite'),
             'wiki' => request('wiki'),
             'desc' => request('desc')
         ]);

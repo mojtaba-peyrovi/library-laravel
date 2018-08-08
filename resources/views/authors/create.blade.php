@@ -63,6 +63,14 @@
                     </div>
                 </div>
 
+
+                <div class="form-check mb-3 mt-3">
+                    <input type="hidden" name="favorite" value="0">
+                    <input type="checkbox" class="form-check-input" name="favorite" value="1">
+                   {{-- <input type="checkbox" class="form-check-input" name="favorite" value="true"> --}}
+                   <label class="form-check-label" for="favorite">Make him/her favorite</label>
+                </div>
+
                 <div class="form-group">
                   <label for="image">Photo:</label>
                   <input type="file" class="form-control" id="image" name="image">

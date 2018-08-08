@@ -56,7 +56,11 @@
 
                         <div class="mb-3">
                             <div class="view overlay">
+                                @if ($book->favorite == 1)
+                                    <img src="img/method-draw-image.svg" alt=""style="width:5em;height:auto;z-index:2;position:absolute;left:100px;top:10px;">
+                                @endif
                                 <img class="z-depth-1-half" src="{{ $book->photo }}" alt="">
+
                                 <a href="{{ $book->path() }}">
                                 <div class="mask flex-center rgba-teal-strong">
                                 <p class="white-text">Read More...</p>
@@ -69,6 +73,11 @@
                             ({{ $book->publish_year }})
                         </a>
                     </div>
+
+
+
+
+
 
         @endforeach
 
