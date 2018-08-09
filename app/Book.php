@@ -27,4 +27,9 @@ class Book extends Model
     {
         return $this->belongsTo(Publisher::class);
     }
+
+    public function getRate()
+    {
+        return $this->rate;
+    }
 }

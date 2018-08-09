@@ -89,10 +89,19 @@
                       <label for="read_date">Read date: </label>
                       <input type="text" class="form-control" name="read_date" id="datepicker">
                     </div>
-                    <div class="form-check mb-4 mt-3 offset-md-2">
+
+                    <div class="form-group col-md-3">
+                        <label for="rate">Rate it:</label>
+                          <select class="form-control" id="rate" name="rate">
+                              @for ($i=0; $i < 6; $i++)
+                                  <option value="{{ $i}}">{{ $i }}</option>
+                              @endfor
+                          </select>
+                    </div>
+                    <div class="form-check mb-4 mt-3 ml-3">
                         <input type="hidden" name="favorite" value="0">
                         <input type="checkbox" class="form-check-input mt-4" name="favorite" value="1">
-                       <label class="form-check-label mt-3 ml-2" for="favorite">Make it favorite</label>
+                       <label class="form-check-label mt-3" for="favorite">Make it favorite</label>
                     </div>
                 </div>
 

@@ -16,7 +16,10 @@
             @include('flash::message')
 
         <div class="row">
+
+
             <div class="col-md-4">
+
                 <img src="{{ $book->photo }}" alt="">
             </div>
             <div class="col-md-6 bg-grey-lighter p-4">
@@ -28,6 +31,8 @@
                     </span>
 
                 </h1>
+
+
                 <p>
                     by <a href="/authors/{{ $book->author['id'] }}">
                         {{ $book->author['name'] }}
@@ -44,13 +49,18 @@
                 <span class="badge {{ $book->type['color'] }} mt-3">
                     {{ $book->type['title'] }}
                 </span>
+                <!-- rating stars -->
                 <span class="rates ml-2">
-                    <img src="/img/star.png" style="width:15px;height:15px;">
-                    <img src="/img/star.png" style="width:15px;height:15px;">
-                    <img src="/img/star.png" style="width:15px;height:15px;">
-                    <img src="/img/star.png" style="width:15px;height:15px;">
-                    <img src="/img/star-off.png" style="width:15px;height:15px;">
-                    <small class="ml-2 text-muted">(4.0)</small>
+                    <span class="hidden">{{ $book_rate = $book->rate }}</span>
+                    @for ($i=0; $i < $book_rate; $i++)
+                        <img src="/img/star.png" style="width:15px;height:15px;">
+                    @endfor
+                    <span class="hidden">{{ $rate_off = 5 - ($book->rate) }}</span>
+                    @for ($i=0; $i < $rate_off; $i++)
+                        <img src="/img/star-off.png" style="width:15px;height:15px;">
+                    @endfor
+                    <small class="ml-2 text-muted">({{ $book->rate }}.0)</small>
+                <!-- end of stars-->
                 </span>
 
 

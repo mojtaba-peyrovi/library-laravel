@@ -76,6 +76,7 @@ class booksController extends Controller
             'publish_year' => request('publish_year'),
             'photo' => '/img/books/'. $filename,
             'format' => request('format'),
+            'rate'=> request('rate'),
             'desc' => request('desc'),
             'quotes' => request('quotes')
         ]);
@@ -95,8 +96,9 @@ class booksController extends Controller
         $self = Book::find($book)->all();
         $related_books = Book::where('type_id', $book->type_id)->get();
         $final_related = $related_books->diff($self);
-        // dd($final);
-        return view('books.show', compact('book','final_related'));
+
+        $book_rate = $book->rate;
+        return view('books.show', compact('book','final_related','$book_rate'));
     }
 
     /**

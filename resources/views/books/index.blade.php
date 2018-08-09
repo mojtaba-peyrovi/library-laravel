@@ -11,7 +11,7 @@
     <div class="container mt-4">
             @include('flash::message')
             <!--Jumbotron-->
-                <div class="jumbotron mt-4">
+                <div class="jumbotron">
                     <h1 class="h1-reponsive mb-3 blue-text"><strong class="text-white">
                         <i class="fa fa-book"></i>
                         Books</strong></h1>
@@ -53,12 +53,12 @@
                         <span class="badge {{ $book->type['color'] }}">
                             {{ $book->type['title'] }}
                         </span>
-
+                        @if ($book->favorite == 1)
+                            <img src="img/method-draw-image.svg" alt=""style="width:5em;height:auto;z-index:2;position:absolute;left:113px;top:10px;">
+                        @endif
                         <div class="mb-3">
                             <div class="view overlay">
-                                @if ($book->favorite == 1)
-                                    <img src="img/method-draw-image.svg" alt=""style="width:5em;height:auto;z-index:2;position:absolute;left:100px;top:10px;">
-                                @endif
+
                                 <img class="z-depth-1-half" src="{{ $book->photo }}" alt="">
 
                                 <a href="{{ $book->path() }}">
@@ -68,10 +68,27 @@
                                 </a>
                             </div>
                         </div>
+
+                        <!-- rating stars -->
+                        <span class="rates">
+
+                            <span class="hidden">{{ $book_rate = $book->rate }}</span>
+                            @for ($i=0; $i < $book_rate; $i++)
+                                <img src="/img/star.png" style="width:15px;height:15px;">
+                            @endfor
+                            <span class="hidden">{{ $rate_off = 5 - ($book->rate) }}</span>
+                            @for ($i=0; $i < $rate_off; $i++)
+                                <img src="/img/star-off.png" style="width:15px;height:15px;">
+                            @endfor
+                            <small class="ml-2 text-muted">({{ $book->rate }}.0)</small>
+                        <!-- end of stars-->
+
                         <a href="/books/{{ $book->id }}">
-                            {{ $book->title }}
-                            ({{ $book->publish_year }})
+                            <h6 class="font-bold font-small">{{ $book->title }}
+                            </h6>
+                            <small>({{ $book->publish_year }})</small>
                         </a>
+
                     </div>
 
 
