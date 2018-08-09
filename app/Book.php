@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Book extends Model
 {
     protected $guarded = [];
@@ -28,8 +28,19 @@ class Book extends Model
         return $this->belongsTo(Publisher::class);
     }
 
-    public function getRate()
+    public function user()
     {
-        return $this->rate;
+        return $this->belongsTo(User::class);
+    }
+
+    public function is_new()
+    {
+        $now = Carbon::now();
+        $days_ago = $now->diffInDays($this->created_at);
+        if ($days_ago <= 7) {
+            return True;
+        }else {
+            return False;
+        }
     }
 }

@@ -46,59 +46,73 @@
             <a href="books/create" class="text-orange font-bold d-flex justify-content-end" target="_blank">
                 New Book
             </a>
+            <h6>Recently Added:</h6>
+            <hr>
         <div class="row">
         @foreach ($books as $book)
+            @if ($book->is_new() == True)
+                <div class="col-md-2 mt-4">
+                    <span class="badge {{ $book->type['color'] }}">
+                        {{ $book->type['title'] }}
+                    </span>
+                    @if ($book->is_new() == True)
+                        <img src="img/new-book-tag.svg" alt=""style="width:5em;height:auto;z-index:2;position:absolute;left:113px;top:10px;">
+                    @endif
+                    <div class="mb-3">
+                        <div class="view overlay">
 
-                    <div class="col-md-2 mt-4">
-                        <span class="badge {{ $book->type['color'] }}">
-                            {{ $book->type['title'] }}
-                        </span>
-                        @if ($book->favorite == 1)
-                            <img src="img/method-draw-image.svg" alt=""style="width:5em;height:auto;z-index:2;position:absolute;left:113px;top:10px;">
-                        @endif
-                        <div class="mb-3">
-                            <div class="view overlay">
+                            <img class="z-depth-1-half" src="{{ $book->photo }}" alt="">
 
-                                <img class="z-depth-1-half" src="{{ $book->photo }}" alt="">
-
-                                <a href="{{ $book->path() }}">
-                                <div class="mask flex-center rgba-teal-strong">
-                                <p class="white-text">Read More...</p>
-                                </div>
-                                </a>
+                            <a href="{{ $book->path() }}">
+                            <div class="mask flex-center rgba-teal-strong">
+                            <p class="white-text">Read More...</p>
                             </div>
+                            </a>
                         </div>
-
-                        <!-- rating stars -->
-                        <span class="rates">
-
-                            <span class="hidden">{{ $book_rate = $book->rate }}</span>
-                            @for ($i=0; $i < $book_rate; $i++)
-                                <img src="/img/star.png" style="width:15px;height:15px;">
-                            @endfor
-                            <span class="hidden">{{ $rate_off = 5 - ($book->rate) }}</span>
-                            @for ($i=0; $i < $rate_off; $i++)
-                                <img src="/img/star-off.png" style="width:15px;height:15px;">
-                            @endfor
-                            <small class="ml-2 text-muted">({{ $book->rate }}.0)</small>
-                        <!-- end of stars-->
-
-                        <a href="/books/{{ $book->id }}">
-                            <h6 class="font-bold font-small">{{ $book->title }}
-                            </h6>
-                            <small>({{ $book->publish_year }})</small>
-                        </a>
-
+                    </div>
+                    @include('front.partials.rate-stars')
+                    <a href="/books/{{ $book->id }}">
+                        <h6 class="font-bold font-small">{{ $book->title }}
+                        </h6>
+                        <small>({{ $book->publish_year }})</small>
+                    </a>
+                </div>
+            @endif
+        @endforeach
+        </div>
+        <h6 class="mt-4">All Books:</h6>
+        <hr>
+        <div class="row">
+            @foreach ($books as $book)
+                <div class="col-md-2 mt-4">
+                    <span class="badge {{ $book->type['color'] }}">
+                        {{ $book->type['title'] }}
+                    </span>                    
+                    <div class="mb-3">
+                        <div class="view overlay">
+                            <img class="z-depth-1-half" src="{{ $book->photo }}" alt="">
+                            <a href="{{ $book->path() }}">
+                            <div class="mask flex-center rgba-teal-strong">
+                            <p class="white-text">Read More...</p>
+                            </div>
+                            </a>
+                        </div>
                     </div>
 
+                    @include('front.partials.rate-stars')
 
 
-
-
-
-        @endforeach
-
+                    <a href="/books/{{ $book->id }}">
+                        <h6 class="font-bold font-small">{{ $book->title }}
+                        </h6>
+                        <small>({{ $book->publish_year }})</small>
+                    </a>
+                </div>
+            @endforeach
         </div>
+
+
+
         <span class="d-flex justify-content-center mt-3">
             {{ $books->links() }}
         </span>

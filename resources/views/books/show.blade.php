@@ -21,6 +21,10 @@
             <div class="col-md-4">
 
                 <img src="{{ $book->photo }}" alt="">
+                <h6 class="p-3 m-2 bg-light col-md-8">
+                    <strong>Read Date: </strong>
+                            {{ $book->read_date }}
+                </h6>
             </div>
             <div class="col-md-6 bg-grey-lighter p-4">
                 <h1>
@@ -63,34 +67,42 @@
                 <!-- end of stars-->
                 </span>
 
+                <span class="hidden">{{ $book_user = $book->user->id }}</span>
+                @if ($book_user == Auth::user()['id'])
+                    <div class="d-flex justify-content-end">
 
-                <div class="d-flex justify-content-end">
+                        <form method="get" action="/books/{{ $book->id}}/edit">
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-warning btn-sm">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                EDIT
+                            </button>
+                        </form>
+                        <form class="pull-right" action="{{ action('booksController@destroy', $book->id) }}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="DELETE">
 
-                    <form method="get" action="/books/{{ $book->id}}/edit">
-                        {{ csrf_field() }}
-                        <button type="submit" class="btn btn-warning btn-sm">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                            EDIT
-                        </button>
-                    </form>
-                    <form class="pull-right" action="{{ action('booksController@destroy', $book->id) }}" method="post">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-
-                        <button class="btn btn-sm btn-danger" data-toggle="confirmation"
-                                data-btn-ok-label="Continue" data-btn-ok-class="btn-success"
-                                data-btn-ok-icon-class="" data-btn-ok-icon-content=""
-                                data-btn-cancel-label="" data-btn-cancel-class="btn-danger"
-                                data-btn-cancel-icon-class="" data-btn-cancel-icon-content="close"
-                                data-title="Are You Sure?" data-content="You will lose this book forever!">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                DELETE
-                        </button>
-                    </form>
-                </div>
+                            <button class="btn btn-sm btn-danger" data-toggle="confirmation"
+                                    data-btn-ok-label="Continue" data-btn-ok-class="btn-success"
+                                    data-btn-ok-icon-class="" data-btn-ok-icon-content=""
+                                    data-btn-cancel-label="" data-btn-cancel-class="btn-danger"
+                                    data-btn-cancel-icon-class="" data-btn-cancel-icon-content="close"
+                                    data-title="Are You Sure?" data-content="You will lose this book forever!">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    DELETE
+                            </button>
+                        </form>
+                    </div>
+                @endif
 
 
-                <hr>
+                <span class="text-muted font-small ml-4">Created by:
+                    <a href="/users/{{ $book->user->id}}">
+                     {{ $book->user['name'] }}
+                     </a>
+                 </span>
+                <span class="text-muted font-small ml-4">({{ $book->created_at->DiffForHumans() }})</span>
+                <hr style="margin-top:-2px;">
                 <h6 class="font-bold mb-2">About the book:</h6>
                 <p>{{ $book->desc }}</p>
             </div>
@@ -118,8 +130,8 @@
                                     <a href="/books/{{ $book->id }}">
                                     <div class="mask flex-center rgba-teal-strong">
                                     <p class="white-text">Read More...</p>
-                                    </a>
                                     </div>
+                                    </a>
                                 </div>
                                 <a href="/books/{{ $book->id }}" class="mt-2">
                                     {{ $book->title }}

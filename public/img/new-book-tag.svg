@@ -4,11 +4,11 @@
 	 viewBox="-299 394.4 12 4.6" style="enable-background:new -299 394.4 12 4.6;" xml:space="preserve">
 <style type="text/css">
 	.st0{opacity:0.5;fill:#FFFFFF;stroke:#000000;stroke-width:1.5;enable-background:new    ;}
-	.st1{fill:#073A77;}
-	.st2{fill:#3385FF;}
+	.st1{fill:#02542F;}
+	.st2{fill:#048E52;}
 	.st3{fill:#FFFFFF;}
 	.st4{font-family:'GillSansMT';}
-	.st5{font-size:2px;}
+	.st5{font-size:1.7px;}
 </style>
 <g>
 	<title>Layer 1</title>
@@ -26,7 +26,7 @@
 			<g>
 				<g>
 					<g>
-						<text transform="matrix(1 0 0 1 -296.3091 396.7003)" class="st3 st4 st5">Favorite</text>
+						<text transform="matrix(1 0 0 1 -296.8032 396.4885)" class="st3 st4 st5">New Book</text>
 					</g>
 				</g>
 			</g>

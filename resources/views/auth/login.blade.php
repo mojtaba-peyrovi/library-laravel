@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('title')
+Login
+@endsection
 @section('content')
     @include('front.partials.nav')
 <div class="container mt-4">
@@ -56,9 +58,9 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </form>

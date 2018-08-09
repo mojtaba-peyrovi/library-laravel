@@ -29,7 +29,14 @@
                     <a class="dropdown-item" href="/ebooks">Ebooks</a>
                     <a class="dropdown-item" href="/physical-books">Physical Books</a>
                     <a class="dropdown-item" href="/audio-books">Audio Books</a>
-                    <a class="dropdown-item" href="/books/create" style="background-color:orange;">Add More Books</a>
+                    @if (Auth::check())
+                        <a class="dropdown-item" href="/books/create">
+                            <span class="text-warning">
+                                <i class="fa fa-pencil"></i>
+                                Add More Books</span>
+                        </a>
+                    @endif
+
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -38,7 +45,14 @@
                     Authors</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/authors">All Authors</a>
-                    <a class="dropdown-item" href="/authors/create" style="background-color:orange;">Add More Authors</a>
+                    @if (Auth::check())
+                        <a class="dropdown-item" href="/authors/create">
+                            <span class="text-warning">
+                                <i class="fa fa-pencil"></i>
+                                Add More Authors</span>
+                        </a>
+                    @endif
+
                 </div>
             </li>
 
@@ -48,7 +62,13 @@
                     Types(Genres)</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/types">All Types</a>
-                    <a class="dropdown-item" href="/types/create" style="background-color:orange;">Add a Type</a>
+                    @if (Auth::check())
+                        <a class="dropdown-item" href="/types/create">
+                            <span class="text-warning">
+                                <i class="fa fa-pencil"></i>
+                                Add a Type</span>
+                        </a>
+                    @endif
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -57,49 +77,37 @@
                     Publishers</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/publishers">All Publishers</a>
-                    <a class="dropdown-item" href="/publishers/create" style="background-color:orange;">Add a Publisher</a>
+                    @if (Auth::check())
+                        <a class="dropdown-item" href="/publishers/create">
+                            <span class="text-warning">
+                                <i class="fa fa-pencil"></i>
+                                Add a Publisher</span>
+                        </a>
+                    @endif
                 </div>
             </li>
-
         </ul>
-        <!-- Links -->
 
-        {{-- <form class="form-inline">
-            <div class="md-form my-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            </div>
-        </form> --}}
 
-        <ul class="navbar-nav">
-
-            @if (auth::check())
-                <li class="nav-item">
-                    <a href="" class="nav-link bg-white text-warning font-bold">
-                        {{ auth::user()->name}}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        Logout
-                    </a>
-                </li>
+        <div class="btn-group">
+            @if (Auth::check())
+                <button class="dropdown-toggle nav-link text-white" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border:1px solid orange;border-radius:5px;">
+                    <img src="/img/empty-user.jpg" style="width:20px;height:20px;" class="rounded-circle">
+                     {{ Auth::user()->name }}
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/users/{{ Auth::user()->id }}">My Profile</a>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
             @else
-                <li class="nav-item">
-                    <a href="" class="nav-link">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        Login
-                    </a>
-                </li>
+                <a href="/register" class="nav-link text-white">Register</a>
+                <a href="{{ Route('login') }}" class="nav-link text-white">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    Login
+                </a>
             @endif
-
-
-
-        </ul>
+        </div>
     </div>
-    <!-- Collapsible content -->
 
 </nav>
 <!--/.Navbar-->

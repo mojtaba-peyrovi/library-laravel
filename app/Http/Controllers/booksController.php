@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Author;
 use App\Type;
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\CsvImportRequest;
 use Illuminate\Support\Facades\Input;
@@ -16,6 +17,11 @@ use Carbon\Carbon;
 
 class booksController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
     // public function __construct()
     // {
     //     $authors = Author::all();
@@ -33,6 +39,7 @@ class booksController extends Controller
     public function index()
     {
         $books = Book::paginate(6);
+
         return view('books.index', compact('books'));
     }
 
@@ -56,6 +63,8 @@ class booksController extends Controller
      */
     public function store(Request $request)
     {
+
+
         //image upload
        if(Input::hasFile('image'))
        {
@@ -68,6 +77,7 @@ class booksController extends Controller
 
         $book = Book::create([
             'title' => ucwords(request('title')),
+            'user_id' => Auth::user()->id,
             'author_id' => $request->input('author'),
             'type_id' => $request->input('type'),
             'publisher_id' => 1,
@@ -93,6 +103,7 @@ class booksController extends Controller
      */
     public function show(Book $book)
     {
+
         $self = Book::find($book)->all();
         $related_books = Book::where('type_id', $book->type_id)->get();
         $final_related = $related_books->diff($self);
